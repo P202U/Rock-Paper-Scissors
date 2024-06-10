@@ -30,7 +30,19 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame(playRound) {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
+
+    if (humanScore > computerScore) console.log(`You won the game`);
+    else if (humanScore < computerScore) console.log(`You lost the game`);
+    else console.log(`It's a tie`);
+
+    console.log(`Scores: You- ${humanScore}, Me- ${computerScore}`);
+}
+
+playGame(playRound);
