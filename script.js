@@ -8,3 +8,8 @@ function getComputerChoice() {
     } return `Scissors`;
 }
 
+function getHumanChoice() {
+    const humanChoice = prompt(`Play your choice`);
+
+    return humanChoice.toLowerCase();
+}
