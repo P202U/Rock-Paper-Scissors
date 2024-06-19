@@ -1,32 +1,28 @@
+const rps = ["rock", "paper", "scissors"]
+
 function getComputerChoice() {
-    const computerChoice = Math.floor(Math.random() * 3);
-    return computerChoice;
+    return rps[Math.floor(Math.random() * rps.length)]
 }
 
 function getHumanChoice() {
     const humanChoice = prompt(`Play your choice`);
-
-    humanChoice.toLowerCase(); // Changing to lower case
-
-    if (humanChoice === `rock`) {
-        return 0;
-    } else if (humanChoice === `paper`) {
-        return 1;
-    } return 2;
+    return humanChoice.toLowerCase(); // Changing to lower case
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-    if (((humanChoice - computerChoice) % 3 + 3) % 3 === 1) {
-        console.log(`You won!`);
-        humanScore++;
-    } else if (((humanChoice - computerChoice) % 3 + 3) % 3 === 2) {
-        console.log(`You Lost!`);
-        computerScore++;
-    } else {
-        console.log(`It's a tie!`);
+    const difference = (rps.length + rps.indexOf(humanChoice) - rps.indexOf(computerChoice)) % rps.length
+    switch (difference) {
+        case 0:
+            return "It's a draw!";
+        case 2:
+            computerScore++;
+            return `You lose! ${computerChoice} beats ${humanChoice}`;
+        default:
+            humanScore++;
+            return `You win! ${humanChoice} beats ${computerChoice}`;
     }
 }
 
@@ -35,7 +31,7 @@ function playGame(playRound) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
+        console.log(playRound(humanSelection, computerSelection));
     }
 
     if (humanScore > computerScore) console.log(`You won the game`);
