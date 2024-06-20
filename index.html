@@ -9,22 +9,25 @@
 
 <body>
     <div class="container">
-        <div class="overflow hidden">
+        <div class="overlay hidden">
             <div class="buttons">
                 <button class="btn">ROCK</button>
                 <button class="btn">PAPER</button>
                 <button class="btn">SCISSORS</button>
             </div>
-            <div class="round-winner hidden"></div>
             <div class="choices">
-                <h2>Your Choice:- <span class="human-choice">0</span></h2>
-                <h2>Computer Choice:- <span class="computer-choice">0</span></h2>
+                <h2>Your Choice:- <span class="human-choice">-</span></h2>
+                <h2>Computer Choice:- <span class="computer-choice">-</span></h2>
             </div>
+            <div class="round-winner hidden"></div>
             <div class="scores">
                 <h2>Score: <span class="human-score"></span></h2>
                 <h2>Score: <span class="computer-score"></span></h2>
             </div>
-            <div class="game-winner hidden"></div>
+            <div class="display-winner">
+                <div class="game-winner hidden"></div>
+                <button class="restart hidden">Restart Game</button>
+            </div>
         </div>
     </div>
 
