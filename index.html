@@ -8,9 +8,25 @@
 </head>
 
 <body>
-    <h1>Just a fun little game of Rock Paper Scissors</h1>
-    <h2>A game will contain 5 rounds</h2>
-    <h2>One who wins most will win the game</h2>
+    <div class="container">
+        <div class="overflow hidden">
+            <div class="buttons">
+                <button class="btn">ROCK</button>
+                <button class="btn">PAPER</button>
+                <button class="btn">SCISSORS</button>
+            </div>
+            <div class="round-winner hidden"></div>
+            <div class="choices">
+                <h2>Your Choice:- <span class="human-choice">0</span></h2>
+                <h2>Computer Choice:- <span class="computer-choice">0</span></h2>
+            </div>
+            <div class="scores">
+                <h2>Score: <span class="human-score"></span></h2>
+                <h2>Score: <span class="computer-score"></span></h2>
+            </div>
+            <div class="game-winner hidden"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -1,12 +1,23 @@
-const rps = ["rock", "paper", "scissors"]
+const computerChoiceDisplay = document.querySelector('.computer-choice');
+const computerScoreDisplay = document.querySelector('.computer-score');
+const humanChoiceDisplay = document.querySelector('.human-choice');
+const humanScoreDisplay = document.querySelector('.human-score');
+const gameWinnerDisplay = document.querySelector('.game-winner');
+
+const rps = ["ROCK", "PAPER", "SCISSORS"];
 
 function getComputerChoice() {
     return rps[Math.floor(Math.random() * rps.length)]
 }
 
-function getHumanChoice() {
-    const humanChoice = prompt(`Play your choice`);
-    return humanChoice.toLowerCase(); // Changing to lower case
+function startGame() {
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const humanChoice = e.target.textContent;
+            const computerChoice = getComputerChoice();
+        });
+    });
 }
 
 let humanScore = 0;
