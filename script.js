@@ -19,6 +19,7 @@ btns.forEach(btn => {
         const computerChoice = getComputerChoice();
         const result = playRound(humanChoice, computerChoice);
         updateGameUI(humanChoice, computerChoice, result);
+        roundWinnerDisplay.classList.remove('hidden');
     });
 });
 
@@ -64,4 +65,5 @@ restartButton.addEventListener('click', () => {
 
     restartButton.classList.add('hidden');
     gameWinnerDisplay.classList.add('hidden');
+    roundWinnerDisplay.classList.add('hidden');
 });
