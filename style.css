@@ -1,7 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-color: #000000ab;
+    --gradient: linear-gradient(to top left, #000000 0%, #29323a 100%);
+    --white: #ffffff;
+    --primary-background: rgba(255, 255, 255, 0.35);
+    --secondary-background: rgba(255, 255, 255, 0.7);
+    --round-winner: rgba(246, 242, 245, 0.169);
+    --winner-background: #2f2f2f;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    height: 100vh;
+    color: #333;
+    background-image: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    width: 80rem;
+    min-height: 50rem;
+    background-color: var(--primary-background);
+    box-shadow: 0 4rem 5rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.player {
+    flex: 50%;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.75s;
+}
+
+.name {
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+}
+
+.score {
+    font-size: 5rem;
+    font-weight: 400;
+    margin-bottom: auto;
+    color: var(--primary-color);
+}
+
+.choice {
+    padding: 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    border-radius: 9px;
+    transition: all 0.75s;
+    opacity: 0.8;
+    width: 65%;
+}
+
+.choice-label {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.current-choice {
+    font-size: 3rem;
+}
+
+.btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 14rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    word-spacing: 0.2rem;
+    border-radius: 10vw;
+    font-weight: 400;
+    padding: 0.7rem 2rem;
+    transition: all 0.5s;
+
+    background-color: var(--secondary-background);
+    backdrop-filter: blur(10rem);
+    box-shadow: 0 2rem 3rem rgba(48, 46, 46, 0.214);
+}
+
+.symbol {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.symbol-name {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-restart {
+    top: 2rem;
+    min-width: fit-content;
+    min-width: -moz-fit-content;
+}
+
+.btn-rock {
+    top: 32.8rem;
+}
+
+.btn-paper {
+    top: 37.2rem;
+}
+
+.btn-scissors {
+    top: 41.6rem;
+}
+
+.btn:active {
+    transform: translate(-50%, 0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.display-round-winner {
+    position: absolute;
+    left: 50%;
+    top: 24rem;
+    transform: translateX(-50%);
+
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    transition: all 0.75s;
+    min-width: 35rem;
+
+    padding: 0.7rem 2rem;
+    border-radius: 10vw;
+    box-shadow: 0 1.2rem 1.7rem rgba(48, 46, 46, 0.214);
+    background-color: var(--secondary-background);
+    backdrop-filter: blur(10rem);
+}
+
+.round-winner {
+    background-color: var(--round-winner);
+}
+
+.round-winner .name {
+    font-weight: 450;
+}
+
+.round-winner .score {
+    font-weight: 550;
+}
+
+.game-winner {
+    background-color: var(--winner-background);
+}
+
+.game-winner .name {
+    font-weight: 725;
+    color: var(--white);
+}
+
+.game-winner .score {
+    font-weight: 575;
+    color: var(--white);
 }
 
 .hidden {
