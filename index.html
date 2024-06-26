@@ -10,24 +10,38 @@
 
 <body>
     <div class="container">
-        <div class="overlay hidden"></div>
+        <section class="player human round-winner">
+            <h2 class="name">You</h2>
+            <p class=" score human-score">0</p>
+            <div class="choice">
+                <p class="choice-label">Choice</p>
+                <p class="current-choice human-choice">-</p>
+            </div>
+        </section>
+        <section class="player computer">
+            <h2 class="name">Computer</h2>
+            <p class=" score computer-score">0</p>
+            <div class="choice">
+                <p class="choice-label">Choice</p>
+                <p class="current-choice computer-choice">-</p>
+            </div>
+        </section>
+
+        <div class="display-round-winner hidden"></div>
+        <button class="btn btn-restart">🔄️ Restart</button>
         <div class="buttons">
-            <button class="btn">ROCK</button>
-            <button class="btn">PAPER</button>
-            <button class="btn">SCISSORS</button>
-        </div>
-        <div class="choices">
-            <h2>Your Choice:- <span class="human-choice">-</span></h2>
-            <h2>Computer Choice:- <span class="computer-choice">-</span></h2>
-        </div>
-        <div class="round-winner"></div>
-        <div class="scores">
-            <h2>Score: <span class="human-score"></span></h2>
-            <h2>Score: <span class="computer-score"></span></h2>
-        </div>
-        <div class="display-winner">
-            <div class="game-winner hidden"></div>
-            <button class="restart hidden">Restart Game</button>
+            <button class="btn btn-rock">
+                <div class="symbol">👊</div>
+                <div class="symbol-name">rock</div>
+            </button>
+            <button class="btn btn-paper">
+                <div class="symbol">✋</div>
+                <div class="symbol-name">paper</div>
+            </button>
+            <button class="btn btn-scissors">
+                <div class="symbol">✌️</div>
+                <div class="symbol-name">scissors</div>
+            </button>
         </div>
     </div>
 
