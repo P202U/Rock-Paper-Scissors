@@ -4,13 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 
 <body>
-    <h1>Just a fun little game of Rock Paper Scissors</h1>
-    <h2>A game will contain 5 rounds</h2>
-    <h2>One who wins most will win the game</h2>
+    <div class="container">
+        <section class="player human round-winner">
+            <h2 class="name">You</h2>
+            <p class=" score human-score">0</p>
+            <div class="choice">
+                <p class="choice-label">Choice</p>
+                <p class="current-choice human-choice">-</p>
+            </div>
+        </section>
+        <section class="player computer">
+            <h2 class="name">Computer</h2>
+            <p class=" score computer-score">0</p>
+            <div class="choice">
+                <p class="choice-label">Choice</p>
+                <p class="current-choice computer-choice">-</p>
+            </div>
+        </section>
+
+        <div class="display-round-winner hidden"></div>
+        <button class="btn btn-restart">🔄️ Restart</button>
+        <div class="buttons">
+            <button class="btn btn-rock">
+                <div class="symbol">👊</div>
+                <div class="symbol-name">rock</div>
+            </button>
+            <button class="btn btn-paper">
+                <div class="symbol">✋</div>
+                <div class="symbol-name">paper</div>
+            </button>
+            <button class="btn btn-scissors">
+                <div class="symbol">✌️</div>
+                <div class="symbol-name">scissors</div>
+            </button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
