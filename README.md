@@ -15,3 +15,5 @@ Functionality:
 
 - The game uses JavaScript functions to generate the computer's choice, get the user's choice, determine the winner of each round, and keep track of the score.
 - The game logic utilizes modulo operation (%) to determine the winner based on the difference between the player's and computer's choices.
+
+Live preview: [Rock-Paper-Scissors](https://p202u.github.io/Rock-Paper-Scissors/)
