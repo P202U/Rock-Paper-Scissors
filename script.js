@@ -1,69 +1,106 @@
-const computerChoiceDisplay = document.querySelector('.computer-choice');
-const computerScoreDisplay = document.querySelector('.computer-score');
-const humanChoiceDisplay = document.querySelector('.human-choice');
-const humanScoreDisplay = document.querySelector('.human-score');
-const roundWinnerDisplay = document.querySelector('.round-winner');
-const gameWinnerDisplay = document.querySelector('.game-winner');
-const restartButton = document.querySelector('.restart');
-const btns = document.querySelectorAll('.btn');
+const human = document.querySelector(`.human`);
+const computer = document.querySelector(`.computer`);
+const choiceSection = document.querySelectorAll(`.choice`);
+const humanScore = document.querySelector(`.human-score`);
+const humanChoice = document.querySelector(`.human-choice`);
+const computerScore = document.querySelector(`.computer-score`);
+const computerChoice = document.querySelector(`.computer-choice`);
+const roundWinner = document.querySelector(`.display-round-winner`);
+const btns = document.querySelectorAll(`.btn:not(.btn-restart)`);
+const buttonClass = document.querySelector(`.buttons`);
+const restartButton = document.querySelector(`.btn-restart`);
 
-const rps = ["ROCK", "PAPER", "SCISSORS"];
+const init = () => {
+    humanScore.textContent = `0`;
+    computerScore.textContent = `0`;
+    humanChoice.textContent = `-`;
+    computerChoice.textContent = `-`;
+
+    roundWinner.style.top = ``;
+    restartButton.style.top = ``;
+
+    human.classList.remove(`hidden`);
+    computer.classList.remove(`hidden`);
+    buttonClass.classList.remove(`hidden`);
+    roundWinner.classList.add(`hidden`);
+
+    human.classList.remove(`game-winner`);
+    computer.classList.remove(`game-winner`);
+
+    human.classList.add(`round-winner`);
+    computer.classList.remove(`round-winner`);
+
+    choiceSection.forEach(section => {
+        section.style.opacity = '1';
+        section.style.visibility = 'visible';
+    });
+}
+
+init();
+
+const rps = [`ROCK`, `PAPER`, `SCISSORS`];
 
 function getComputerChoice() {
-    return rps[Math.floor(Math.random() * rps.length)]
+    const random = Math.trunc(Math.random() * rps.length)
+    return rps[random];
 }
 
 btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const humanChoice = e.target.textContent;
-        const computerChoice = getComputerChoice();
-        const result = playRound(humanChoice, computerChoice);
-        updateGameUI(humanChoice, computerChoice, result);
-        roundWinnerDisplay.classList.remove('hidden');
+    btn.addEventListener(`click`, () => {
+        roundWinner.classList.remove(`hidden`);
+        const displayHumanChoice = btn.querySelector(`.symbol-name`).textContent.toUpperCase();
+        const displayComputerChoice = getComputerChoice();
+        const displayRoundWinner = playRound(displayHumanChoice, displayComputerChoice);
+        gameUI(displayHumanChoice, displayComputerChoice, displayRoundWinner);
     });
 });
-
-humanScoreDisplay.textContent = 0;
-computerScoreDisplay.textContent = 0;
 
 function playRound(humanChoice, computerChoice) {
     const difference = (rps.length + rps.indexOf(humanChoice) - rps.indexOf(computerChoice)) % rps.length
     switch (difference) {
         case 0:
+            human.classList.remove(`round-winner`);
+            computer.classList.remove(`round-winner`);
             return "It's a draw!";
         case 2:
-            computerScoreDisplay.textContent++;
+            computerScore.textContent++;
+            human.classList.remove(`round-winner`);
+            computer.classList.add(`round-winner`);
             return `You lose! ${computerChoice} beats ${humanChoice}`;
         default:
-            humanScoreDisplay.textContent++;
+            humanScore.textContent++;
+            human.classList.add(`round-winner`);
+            computer.classList.remove(`round-winner`);
             return `You win! ${humanChoice} beats ${computerChoice}`;
     }
 }
 
-function updateGameUI(humanChoice, computerChoice, result) {
-    humanChoiceDisplay.textContent = humanChoice;
-    computerChoiceDisplay.textContent = computerChoice;
-    roundWinnerDisplay.textContent = result;
+function gameUI(displayHumanChoice, displayComputerChoice, displayRoundWinner) {
+    humanChoice.textContent = displayHumanChoice;
+    computerChoice.textContent = displayComputerChoice;
+    roundWinner.textContent = displayRoundWinner;
 
-    if (humanScoreDisplay.textContent >= 5 || computerScoreDisplay.textContent >= 5) {
-        gameWinnerDisplay.textContent = humanScoreDisplay.textContent > computerScoreDisplay.textContent ? `You won the game!` : `You lost the game`;
-        document.querySelectorAll('.btn').forEach(btn => btn.disabled = true);
-        restartButton.classList.remove('hidden');
-        gameWinnerDisplay.classList.remove('hidden');
+    if (humanScore.textContent >= 5 || computerScore.textContent >= 5) {
+        if (humanScore.textContent > computerScore.textContent) {
+            human.classList.add(`game-winner`);
+            computer.classList.add(`hidden`);
+            buttonClass.classList.add(`hidden`);
+            roundWinner.textContent = `You won the game!`;
+        } else {
+            computer.classList.add(`game-winner`);
+            human.classList.add(`hidden`);
+            buttonClass.classList.add(`hidden`);
+            roundWinner.textContent = `You lost the game`;
+        }
+
+        roundWinner.style.top = `30rem`;
+        restartButton.style.top = `40rem`;
+
+        choiceSection.forEach(section => {
+            section.style.opacity = '0';
+            section.style.visibility = 'hidden';
+        });
     }
 }
 
-restartButton.addEventListener('click', () => {
-    humanScoreDisplay.textContent = '0';
-    computerScoreDisplay.textContent = '0';
-
-    humanChoiceDisplay.textContent = '-';
-    computerChoiceDisplay.textContent = '-';
-    gameWinnerDisplay.textContent = '';
-
-    btns.forEach(btn => btn.disabled = false);
-
-    restartButton.classList.add('hidden');
-    gameWinnerDisplay.classList.add('hidden');
-    roundWinnerDisplay.classList.add('hidden');
-});
+restartButton.addEventListener(`click`, init);
